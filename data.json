@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-29T17:14:40-06:00",
-  "source": "Ski School Summary (3).csv",
+  "updatedAt": "2026-11-02T15:49:26-07:00",
+  "source": "Ski School Summary (5).csv",
   "availability": {
     "2026-11-20": {
-      "ski": 3,
+      "ski": 2,
       "snowboard": 0
     },
     "2026-11-21": {
-      "ski": 3,
+      "ski": 2,
       "snowboard": 0
     },
     "2026-11-22": {
-      "ski": 4,
+      "ski": 3,
       "snowboard": 1
     },
     "2026-11-23": {
-      "ski": 4,
+      "ski": 3,
       "snowboard": 1
     },
     "2026-11-24": {
@@ -24,11 +24,11 @@
       "snowboard": 1
     },
     "2026-11-25": {
-      "ski": 0,
+      "ski": 1,
       "snowboard": 1
     },
     "2026-11-26": {
-      "ski": 0,
+      "ski": 1,
       "snowboard": 1
     },
     "2026-11-27": {
@@ -112,7 +112,7 @@
       "snowboard": 1
     },
     "2026-12-17": {
-      "ski": 3,
+      "ski": 2,
       "snowboard": 0
     },
     "2026-12-18": {
@@ -204,7 +204,7 @@
       "snowboard": 3
     },
     "2027-01-09": {
-      "ski": 3,
+      "ski": 4,
       "snowboard": 3
     },
     "2027-01-10": {
@@ -232,7 +232,7 @@
       "snowboard": 2
     },
     "2027-01-16": {
-      "ski": 3,
+      "ski": 4,
       "snowboard": 4
     },
     "2027-01-17": {
@@ -260,7 +260,7 @@
       "snowboard": 2
     },
     "2027-01-23": {
-      "ski": 2,
+      "ski": 3,
       "snowboard": 1
     },
     "2027-01-24": {
@@ -288,7 +288,7 @@
       "snowboard": 0
     },
     "2027-01-30": {
-      "ski": 2,
+      "ski": 3,
       "snowboard": 0
     },
     "2027-01-31": {
@@ -316,7 +316,7 @@
       "snowboard": 2
     },
     "2027-02-06": {
-      "ski": 3,
+      "ski": 4,
       "snowboard": 3
     },
     "2027-02-07": {
@@ -344,11 +344,11 @@
       "snowboard": 0
     },
     "2027-02-13": {
-      "ski": 5,
+      "ski": 4,
       "snowboard": 1
     },
     "2027-02-14": {
-      "ski": 5,
+      "ski": 4,
       "snowboard": 0
     },
     "2027-02-15": {
@@ -428,19 +428,19 @@
       "snowboard": 2
     },
     "2027-03-06": {
-      "ski": 5,
+      "ski": 6,
       "snowboard": 2
     },
     "2027-03-07": {
-      "ski": 7,
+      "ski": 9,
       "snowboard": 1
     },
     "2027-03-08": {
-      "ski": 7,
+      "ski": 8,
       "snowboard": 1
     },
     "2027-03-09": {
-      "ski": 4,
+      "ski": 5,
       "snowboard": 1
     },
     "2027-03-10": {
@@ -469,14 +469,14 @@
     },
     "2027-03-16": {
       "ski": 6,
-      "snowboard": 4
+      "snowboard": 5
     },
     "2027-03-17": {
       "ski": 6,
-      "snowboard": 4
+      "snowboard": 5
     },
     "2027-03-18": {
-      "ski": 3,
+      "ski": 4,
       "snowboard": 1
     },
     "2027-03-19": {
@@ -484,15 +484,15 @@
       "snowboard": 0
     },
     "2027-03-20": {
-      "ski": 5,
+      "ski": 6,
       "snowboard": 0
     },
     "2027-03-21": {
-      "ski": 7,
+      "ski": 9,
       "snowboard": 0
     },
     "2027-03-22": {
-      "ski": 7,
+      "ski": 8,
       "snowboard": 1
     },
     "2027-03-23": {
