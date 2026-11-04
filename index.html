@@ -12,9 +12,11 @@
 .needed-list li strong{display:block;margin-bottom:5px}.needed-list .short{color:#a24932;font-weight:700}
 .needed-empty{color:#627489;margin:12px 0 0}
 @media print{.needed{break-before:page;border:0;padding:0}.needed-list{grid-template-columns:repeat(3,1fr)}.needed-control input{display:none}}
-.needed-panes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.needed-pane{min-width:0}.needed-pane h3{font-size:20px;margin:4px 0 12px}.needed-pane+.needed-pane{border-left:1px solid #d9e2ec;padding-left:18px}@media(max-width:800px){.needed-panes{grid-template-columns:1fr}.needed-pane+.needed-pane{border-left:0;border-top:1px solid #d9e2ec;padding:18px 0 0}}@media print{.needed-panes{display:block}.needed-pane+.needed-pane{border-left:0;padding:18px 0 0}}</style></head><body><main class="wrap"><header><div><h1>Private Lesson Availability</h1><p class="sub">Park City · Ski School · November 2026 – April 2027</p></div><div class="sub" id="feedStatus">Checking for updated availability…</div></header><div class="controls"><button id="prev" aria-label="Previous month">← Previous</button><select id="month" aria-label="Month"></select><button id="next" aria-label="Next month">Next →</button><label><input id="ski" type="checkbox" checked> Ski</label><label><input id="sb" type="checkbox" checked> Snowboard</label><button onclick="window.print()">Print this month</button></div><div id="monthTitle" class="month"></div><div id="stats" class="stats"></div><div class="weekdays"><div>Sunday</div><div>Monday</div><div>Tuesday</div><div>Wednesday</div><div>Thursday</div><div>Friday</div><div>Saturday</div></div><section id="calendar" class="calendar" aria-label="Availability calendar"></section><section class="needed" id="daysNeeded"><h2>Days Still Needed</h2><p class="needed-intro">Set separate minimum daily availability targets for Ski and Snowboard. Each list covers the entire season.</p><div class="needed-panes">
+.needed-panes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.needed-pane{min-width:0}.needed-pane h3{font-size:20px;margin:4px 0 12px}.needed-pane+.needed-pane{border-left:1px solid #d9e2ec;padding-left:18px}@media(max-width:800px){.needed-panes{grid-template-columns:1fr}.needed-pane+.needed-pane{border-left:0;border-top:1px solid #d9e2ec;padding:18px 0 0}}@media print{.needed-panes{display:block}.needed-pane+.needed-pane{border-left:0;padding:18px 0 0}}
+dialog{width:min(560px,calc(100% - 28px));border:1px solid #cbd5e1;border-radius:14px;padding:24px;color:#172b41}dialog::backdrop{background:#172b4180}dialog h2{margin-top:0}dialog label{display:block;margin:16px 0 6px;font-weight:650}dialog input{max-width:100%;padding:10px}dialog input[type=password]{width:100%;border:1px solid #cbd5e1;border-radius:8px}dialog p{line-height:1.5}button:disabled{opacity:.5;cursor:default}.upload-help{font-size:13px;color:#52657c}@media print{dialog{display:none!important}}
+</style></head><body><main class="wrap"><header><div><h1>Private Lesson Availability</h1><p class="sub">Park City · Ski School · November 2026 – April 2027</p></div><div class="sub" id="feedStatus">Checking for updated availability…</div></header><div class="controls"><button id="prev" aria-label="Previous month">← Previous</button><select id="month" aria-label="Month"></select><button id="next" aria-label="Next month">Next →</button><label><input id="ski" type="checkbox" checked> Ski</label><label><input id="sb" type="checkbox" checked> Snowboard</label><button id="uploadCSV" type="button">Upload CSV</button><button onclick="window.print()">Print this month</button></div><div id="monthTitle" class="month"></div><div id="stats" class="stats"></div><div class="weekdays"><div>Sunday</div><div>Monday</div><div>Tuesday</div><div>Wednesday</div><div>Thursday</div><div>Friday</div><div>Saturday</div></div><section id="calendar" class="calendar" aria-label="Availability calendar"></section><section class="needed" id="daysNeeded"><h2>Days Still Needed</h2><p class="needed-intro">Set separate minimum daily availability targets for Ski and Snowboard. Each list covers the entire season.</p><div class="needed-panes">
 <section class="needed-pane"><h3 class="ski">Ski</h3><div class="needed-control"><label for="skiThreshold">Minimum ski count: <output id="skiThresholdValue" for="skiThreshold">3</output></label><input type="range" id="skiThreshold" min="0" max="20" value="3" step="1"></div><div class="needed-output" aria-live="polite"><span id="skiDaysCount"></span><span id="skiTotalCount"></span></div><ul class="needed-list" id="skiNeededList"></ul><p class="needed-empty" id="skiNeededEmpty" hidden>No ski days below target.</p></section>
-<section class="needed-pane"><h3 class="snowboard">Snowboard</h3><div class="needed-control"><label for="sbThreshold">Minimum snowboard count: <output id="sbThresholdValue" for="sbThreshold">3</output></label><input type="range" id="sbThreshold" min="0" max="20" value="3" step="1"></div><div class="needed-output" aria-live="polite"><span id="sbDaysCount"></span><span id="sbTotalCount"></span></div><ul class="needed-list" id="sbNeededList"></ul><p class="needed-empty" id="sbNeededEmpty" hidden>No snowboard days below target.</p></section></div></section><footer class="footer"><div>Numbers are reported availability, not confirmed bookings. A dash indicates a date outside the supplied data range.</div><div class="last-updated">Last data updated: <time datetime="2026-10-29T13:53:00-06:00">October 29, 2026 at 1:53 PM Mountain Time</time></div></footer></main><script>
+<section class="needed-pane"><h3 class="snowboard">Snowboard</h3><div class="needed-control"><label for="sbThreshold">Minimum snowboard count: <output id="sbThresholdValue" for="sbThreshold">3</output></label><input type="range" id="sbThreshold" min="0" max="20" value="3" step="1"></div><div class="needed-output" aria-live="polite"><span id="sbDaysCount"></span><span id="sbTotalCount"></span></div><ul class="needed-list" id="sbNeededList"></ul><p class="needed-empty" id="sbNeededEmpty" hidden>No snowboard days below target.</p></section></div></section><footer class="footer"><div>Numbers are reported availability, not confirmed bookings. A dash indicates a date outside the supplied data range.</div><div class="last-updated">Last data updated: <time datetime="2026-10-29T13:53:00-06:00">October 29, 2026 at 1:53 PM Mountain Time</time></div></footer></main><dialog id="uploadDialog" aria-labelledby="uploadTitle"><h2 id="uploadTitle">Upload availability CSV</h2><p>Select a Ski School Summary export to update Ski and Snowboard availability.</p><label for="csvFile">CSV file</label><input id="csvFile" type="file" accept=".csv,text/csv"><p id="uploadStatus" role="status" aria-live="polite">Choose a file to validate it before publishing.</p><label for="githubToken">GitHub access token (for publishing)</label><input id="githubToken" type="password" autocomplete="off" spellcheck="false" aria-describedby="tokenHelp"><p class="upload-help" id="tokenHelp">Use a fine-grained token with access only to jd2012/park-city-lesson-availability and Contents: Read and write. It is sent only to GitHub and is never saved. Preview does not require a token.</p><div class="controls"><button id="previewCSV" disabled>Preview in this tab</button><button id="publishCSV" disabled>Publish for everyone</button><button id="closeUpload">Close</button></div></dialog><script>
 let DATA={"2026-11-20":{"ski":3,"snowboard":0},"2026-11-21":{"ski":3,"snowboard":0},"2026-11-22":{"ski":4,"snowboard":1},"2026-11-23":{"ski":4,"snowboard":1},"2026-11-24":{"ski":3,"snowboard":1},"2026-11-25":{"ski":0,"snowboard":1},"2026-11-26":{"ski":0,"snowboard":1},"2026-11-27":{"ski":3,"snowboard":1},"2026-11-28":{"ski":2,"snowboard":0},"2026-11-29":{"ski":2,"snowboard":0},"2026-11-30":{"ski":1,"snowboard":0},"2026-12-01":{"ski":2,"snowboard":0},"2026-12-02":{"ski":1,"snowboard":0},"2026-12-03":{"ski":1,"snowboard":0},"2026-12-04":{"ski":2,"snowboard":1},"2026-12-05":{"ski":4,"snowboard":2},"2026-12-06":{"ski":1,"snowboard":1},"2026-12-07":{"ski":1,"snowboard":1},"2026-12-08":{"ski":1,"snowboard":1},"2026-12-09":{"ski":0,"snowboard":1},"2026-12-10":{"ski":1,"snowboard":0},"2026-12-11":{"ski":2,"snowboard":2},"2026-12-12":{"ski":2,"snowboard":2},"2026-12-13":{"ski":4,"snowboard":1},"2026-12-14":{"ski":5,"snowboard":2},"2026-12-15":{"ski":2,"snowboard":2},"2026-12-16":{"ski":1,"snowboard":1},"2026-12-17":{"ski":3,"snowboard":0},"2026-12-18":{"ski":4,"snowboard":1},"2026-12-19":{"ski":4,"snowboard":1},"2026-12-20":{"ski":4,"snowboard":1},"2026-12-21":{"ski":3,"snowboard":3},"2026-12-22":{"ski":4,"snowboard":2},"2026-12-23":{"ski":2,"snowboard":2},"2026-12-24":{"ski":3,"snowboard":1},"2026-12-25":{"ski":5,"snowboard":1},"2026-12-26":{"ski":5,"snowboard":1},"2026-12-27":{"ski":3,"snowboard":2},"2026-12-28":{"ski":3,"snowboard":0},"2026-12-29":{"ski":4,"snowboard":0},"2026-12-30":{"ski":8,"snowboard":0},"2026-12-31":{"ski":3,"snowboard":1},"2027-01-01":{"ski":3,"snowboard":1},"2027-01-02":{"ski":3,"snowboard":0},"2027-01-03":{"ski":2,"snowboard":0},"2027-01-04":{"ski":0,"snowboard":0},"2027-01-05":{"ski":0,"snowboard":0},"2027-01-06":{"ski":0,"snowboard":1},"2027-01-07":{"ski":2,"snowboard":1},"2027-01-08":{"ski":4,"snowboard":2},"2027-01-09":{"ski":3,"snowboard":2},"2027-01-10":{"ski":5,"snowboard":0},"2027-01-11":{"ski":6,"snowboard":1},"2027-01-12":{"ski":5,"snowboard":1},"2027-01-13":{"ski":1,"snowboard":1},"2027-01-14":{"ski":0,"snowboard":0},"2027-01-15":{"ski":2,"snowboard":2},"2027-01-16":{"ski":3,"snowboard":4},"2027-01-17":{"ski":1,"snowboard":3},"2027-01-18":{"ski":2,"snowboard":4},"2027-01-19":{"ski":2,"snowboard":4},"2027-01-20":{"ski":0,"snowboard":3},"2027-01-21":{"ski":0,"snowboard":2},"2027-01-22":{"ski":0,"snowboard":2},"2027-01-23":{"ski":0,"snowboard":1},"2027-01-24":{"ski":0,"snowboard":0},"2027-01-25":{"ski":0,"snowboard":0},"2027-01-26":{"ski":0,"snowboard":0},"2027-01-27":{"ski":0,"snowboard":0},"2027-01-28":{"ski":1,"snowboard":0},"2027-01-29":{"ski":0,"snowboard":0},"2027-01-30":{"ski":1,"snowboard":0},"2027-01-31":{"ski":1,"snowboard":0},"2027-02-01":{"ski":0,"snowboard":0},"2027-02-02":{"ski":1,"snowboard":0},"2027-02-03":{"ski":0,"snowboard":0},"2027-02-04":{"ski":1,"snowboard":0},"2027-02-05":{"ski":1,"snowboard":2},"2027-02-06":{"ski":1,"snowboard":3},"2027-02-07":{"ski":0,"snowboard":2},"2027-02-08":{"ski":0,"snowboard":3},"2027-02-09":{"ski":0,"snowboard":2},"2027-02-10":{"ski":0,"snowboard":2},"2027-02-11":{"ski":0,"snowboard":0},"2027-02-12":{"ski":4,"snowboard":0},"2027-02-13":{"ski":5,"snowboard":1},"2027-02-14":{"ski":5,"snowboard":0},"2027-02-15":{"ski":5,"snowboard":0},"2027-02-16":{"ski":6,"snowboard":0},"2027-02-17":{"ski":3,"snowboard":0},"2027-02-18":{"ski":3,"snowboard":0},"2027-02-19":{"ski":5,"snowboard":0},"2027-02-20":{"ski":4,"snowboard":0},"2027-02-21":{"ski":3,"snowboard":0},"2027-02-22":{"ski":3,"snowboard":1},"2027-02-23":{"ski":2,"snowboard":1},"2027-02-24":{"ski":0,"snowboard":1},"2027-02-25":{"ski":1,"snowboard":1},"2027-02-26":{"ski":0,"snowboard":2},"2027-02-27":{"ski":1,"snowboard":2},"2027-02-28":{"ski":1,"snowboard":2},"2027-03-01":{"ski":0,"snowboard":2},"2027-03-02":{"ski":0,"snowboard":2},"2027-03-03":{"ski":2,"snowboard":2},"2027-03-04":{"ski":0,"snowboard":1},"2027-03-05":{"ski":1,"snowboard":2},"2027-03-06":{"ski":2,"snowboard":2},"2027-03-07":{"ski":3,"snowboard":1},"2027-03-08":{"ski":3,"snowboard":1},"2027-03-09":{"ski":2,"snowboard":1},"2027-03-10":{"ski":3,"snowboard":0},"2027-03-11":{"ski":1,"snowboard":0},"2027-03-12":{"ski":1,"snowboard":2},"2027-03-13":{"ski":1,"snowboard":3},"2027-03-14":{"ski":4,"snowboard":2},"2027-03-15":{"ski":4,"snowboard":4},"2027-03-16":{"ski":4,"snowboard":4},"2027-03-17":{"ski":4,"snowboard":4},"2027-03-18":{"ski":2,"snowboard":1},"2027-03-19":{"ski":4,"snowboard":0},"2027-03-20":{"ski":3,"snowboard":0},"2027-03-21":{"ski":4,"snowboard":0},"2027-03-22":{"ski":3,"snowboard":1},"2027-03-23":{"ski":3,"snowboard":1},"2027-03-24":{"ski":2,"snowboard":2},"2027-03-25":{"ski":3,"snowboard":2},"2027-03-26":{"ski":4,"snowboard":4},"2027-03-27":{"ski":4,"snowboard":3},"2027-03-28":{"ski":3,"snowboard":2},"2027-03-29":{"ski":2,"snowboard":1},"2027-03-30":{"ski":2,"snowboard":1},"2027-03-31":{"ski":1,"snowboard":0},"2027-04-01":{"ski":1,"snowboard":1},"2027-04-02":{"ski":1,"snowboard":1},"2027-04-03":{"ski":1,"snowboard":2},"2027-04-04":{"ski":0,"snowboard":1},"2027-04-05":{"ski":0,"snowboard":1},"2027-04-06":{"ski":0,"snowboard":1},"2027-04-07":{"ski":0,"snowboard":1},"2027-04-08":{"ski":0,"snowboard":0},"2027-04-09":{"ski":0,"snowboard":3},"2027-04-10":{"ski":0,"snowboard":3},"2027-04-11":{"ski":0,"snowboard":2},"2027-04-12":{"ski":0,"snowboard":3},"2027-04-13":{"ski":0,"snowboard":3},"2027-04-14":{"ski":0,"snowboard":1},"2027-04-15":{"ski":0,"snowboard":0},"2027-04-16":{"ski":1,"snowboard":0},"2027-04-17":{"ski":1,"snowboard":0},"2027-04-18":{"ski":1,"snowboard":0}};
 const months=['2026-11','2026-12','2027-01','2027-02','2027-03','2027-04'];let index=0;
 const el=id=>document.getElementById(id); const select=el('month');
@@ -49,18 +51,9 @@ el('skiThreshold').addEventListener('input',renderNeeded);
 el('sbThreshold').addEventListener('input',renderNeeded);
 
 const DATA_FEED_URL="./data.json";
-async function syncCalendarData(){
-  try {
-    const response=await fetch(DATA_FEED_URL+"?v="+Date.now(),{cache:"no-store"});
-    if(!response.ok) throw new Error("Unable to load data feed");
-    const payload=await response.json();
-    const entries=payload.availability;
-    if(!entries||typeof entries!=="object"||!Object.keys(entries).length) throw new Error("Feed is empty");
-    for(const [date,values] of Object.entries(entries)){
-      if(!/^\d{4}-\d{2}-\d{2}$/.test(date)||!Number.isInteger(values.ski)||!Number.isInteger(values.snowboard)) throw new Error("Invalid availability data");
-    }
+function applyCalendarData(payload){
     const currentlySelected=months[index];
-    DATA=entries;
+    DATA=payload.availability;
     const nextMonths=[...new Set(Object.keys(DATA).sort().map(date=>date.slice(0,7)))];
     months.splice(0,months.length,...nextMonths);
     select.replaceChildren();
@@ -78,14 +71,115 @@ async function syncCalendarData(){
       updatedLabel.dateTime=payload.updatedAt;
       updatedLabel.textContent=timestamp.toLocaleString("en-US",{timeZone:"America/Denver",dateStyle:"long",timeStyle:"short"})+" Mountain Time";
     }
+    document.querySelector("header .sub").textContent="Park City · Ski School · "+months[0]+" – "+months.at(-1);
+    render();
+}
+async function syncCalendarData(){
+  const revision=uploadRevision;
+  try {
+    const response=await fetch(DATA_FEED_URL+"?v="+Date.now(),{cache:"no-store"});
+    if(!response.ok) throw new Error("Unable to load data feed");
+    const payload=await response.json();
+    const entries=payload.availability;
+    if(!entries||typeof entries!=="object"||!Object.keys(entries).length) throw new Error("Feed is empty");
+    for(const [date,values] of Object.entries(entries)){
+      if(!/^\d{4}-\d{2}-\d{2}$/.test(date)||!Number.isInteger(values.ski)||!Number.isInteger(values.snowboard)) throw new Error("Invalid availability data");
+    }
+    if(uploadRevision!==revision)return;
+    applyCalendarData(payload);
     const feedStatus=document.getElementById("feedStatus");
     if(feedStatus) feedStatus.textContent="Data synced from the latest CSV";
     render();
   } catch(error) {
+    if(uploadRevision!==revision)return;
     const feedStatus=document.getElementById("feedStatus");
     if(feedStatus) feedStatus.textContent="Using bundled data; live update unavailable";
     console.warn("Availability data update was unavailable:",error);
   }
 }
+function parseCSV(text){
+  const rows=[];let row=[],field='',quoted=false;
+  text=text.replace(/^\uFEFF/,'');
+  for(let i=0;i<text.length;i++){
+    const c=text[i];
+    if(c==='"'){if(quoted&&text[i+1]==='"'){field+='"';i++;}else quoted=!quoted;}
+    else if(c===','&&!quoted){row.push(field.trim());field='';}
+    else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&text[i+1]==='\n')i++;row.push(field.trim());if(row.some(Boolean))rows.push(row);row=[];field='';}
+    else field+=c;
+  }
+  if(quoted)throw new Error('The CSV contains an unfinished quoted field.');
+  row.push(field.trim());if(row.some(Boolean))rows.push(row);
+  return rows;
+}
+function parseAvailabilityCSV(text){
+  const [headers,...rows]=parseCSV(text);if(!headers)throw new Error('The CSV is empty.');
+  const columns=headers.map(h=>h.toLowerCase());
+  const required=['begindate','enddate','category_or_activity_code','day1','date1'];
+  if(required.some(h=>!columns.includes(h)))throw new Error('Choose a Ski School Summary CSV with date and daily availability columns.');
+  const result={};
+  for(const row of rows){
+    const get=name=>row[columns.indexOf(name)]||'';
+    const key={'18190':'ski','18195':'snowboard'}[get('category_or_activity_code')];if(!key)continue;
+    const begin=new Date(get('begindate')),end=new Date(get('enddate'));
+    if(!Number.isFinite(+begin)||!Number.isFinite(+end)||end<begin)throw new Error('Invalid report date range.');
+    for(let n=1;columns.includes('date'+n);n++){
+      const raw=get('date'+n);if(!raw)continue;
+      const match=raw.match(/^(\d{1,2})\/(\d{1,2})$/);if(!match)throw new Error('Invalid report date: '+raw);
+      const month=Number(match[1]),day=Number(match[2]);let year=begin.getFullYear();
+      let date=new Date(year,month-1,day);if(date<begin)date=new Date(++year,month-1,day);
+      if(date>end||date.getMonth()!==month-1||date.getDate()!==day)throw new Error('Date outside report range: '+raw);
+      const count=get('day'+n);if(!/^\d+$/.test(count)||!Number.isSafeInteger(Number(count)))throw new Error('Invalid '+key+' count for '+raw+'.');
+      const iso=year+'-'+String(month).padStart(2,'0')+'-'+String(day).padStart(2,'0');
+      result[iso]??={};if(key in result[iso])throw new Error('Duplicate '+key+' data for '+iso+'.');result[iso][key]=Number(count);
+    }
+  }
+  const dates=Object.keys(result).sort();
+  if(!dates.length)throw new Error('No PCY Ski or Snowboard private availability was found.');
+  if(dates.some(d=>!('ski' in result[d])||!('snowboard' in result[d])))throw new Error('The report must include both Ski and Snowboard for every date.');
+  return Object.fromEntries(dates.map(d=>[d,result[d]]));
+}
+let pendingUpload=null,uploadRevision=0,publishing=false;
+const uploadDialog=el('uploadDialog');
+el('uploadCSV').onclick=()=>uploadDialog.showModal();
+el('closeUpload').onclick=()=>uploadDialog.close();
+uploadDialog.addEventListener('cancel',event=>{if(publishing)event.preventDefault();});
+uploadDialog.addEventListener('close',()=>{el('githubToken').value='';});
+el('csvFile').onchange=async()=>{
+  const revision=++uploadRevision;pendingUpload=null;el('previewCSV').disabled=true;el('publishCSV').disabled=true;
+  const file=el('csvFile').files[0];if(!file)return;
+  try{
+    if(file.size>5*1024*1024)throw new Error('Choose a CSV smaller than 5 MB.');
+    const availability=parseAvailabilityCSV(await file.text());if(revision!==uploadRevision)return;
+    pendingUpload={schemaVersion:1,updatedAt:new Date().toISOString(),source:file.name,availability};
+    const dates=Object.keys(availability);
+    el('uploadStatus').textContent=dates.length+' days ready: '+dates[0]+' through '+dates.at(-1)+'. Publishing replaces the shared calendar data.';
+    el('previewCSV').disabled=false;el('publishCSV').disabled=false;
+  }catch(error){if(revision===uploadRevision)el('uploadStatus').textContent=error.message;}
+};
+el('previewCSV').onclick=()=>{
+  if(!pendingUpload)return;uploadRevision++;applyCalendarData(pendingUpload);
+  el('feedStatus').textContent='CSV preview — only visible in this tab; not published';uploadDialog.close();
+};
+el('publishCSV').onclick=async()=>{
+  if(!pendingUpload||publishing)return;
+  const token=el('githubToken').value.trim();if(!token){el('uploadStatus').textContent='Enter a GitHub token to publish, or choose Preview in this tab.';return;}
+  publishing=true;const payload={...pendingUpload,updatedAt:new Date().toISOString()};
+  for(const id of ['publishCSV','previewCSV','csvFile','closeUpload'])el(id).disabled=true;
+  el('uploadStatus').textContent='Publishing to GitHub…';
+  try{
+    const url='https://api.github.com/repos/jd2012/park-city-lesson-availability/contents/data.json';
+    const headers={Authorization:'Bearer '+token,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'};
+    const current=await fetch(url+'?ref=main',{headers,cache:'no-store'});
+    if(!current.ok)throw new Error('GitHub access failed ('+current.status+'). Check your token and repository access.');
+    const {sha}=await current.json();
+    const bytes=new TextEncoder().encode(JSON.stringify(payload,null,2)+'\n');let binary='';for(const byte of bytes)binary+=String.fromCharCode(byte);
+    const response=await fetch(url,{method:'PUT',headers:{...headers,'Content-Type':'application/json'},body:JSON.stringify({message:'Update availability from CSV upload',branch:'main',sha,content:btoa(binary)})});
+    if(!response.ok)throw new Error(response.status===409?'The shared data changed. Review the latest data before trying again.':'Publish failed ('+response.status+'). Check Contents read/write permission and branch rules.');
+    uploadRevision++;applyCalendarData(payload);el('feedStatus').textContent='Published to GitHub — other visitors will see it after GitHub Pages finishes deploying.';
+    el('uploadStatus').textContent='Published successfully. GitHub Pages may take a few minutes to update.';
+  }catch(error){el('uploadStatus').textContent=error.message;}
+  finally{publishing=false;el('githubToken').value='';for(const id of ['publishCSV','previewCSV','csvFile','closeUpload'])el(id).disabled=false;}
+};
+
 syncCalendarData();
 </script></body></html>
