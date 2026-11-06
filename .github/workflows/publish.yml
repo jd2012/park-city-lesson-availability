@@ -1,0 +1,44 @@
+name: Publish availability
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: availability-pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate and import latest CSV
+        run: python3 scripts/import_csv.py
+      - name: Save processed calendar data
+        run: |
+          if ! git diff --quiet -- data.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add data.json
+            git commit -m 'Update calendar from uploaded CSV'
+            git push origin HEAD:main
+          fi
+      - uses: actions/configure-pages@v5
+      - name: Prepare public site
+        run: |
+          mkdir -p _site
+          cp index.html data.json .nojekyll _site/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
