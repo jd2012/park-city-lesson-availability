@@ -44,31 +44,58 @@ def parse(text):
     return dict(sorted(data.items()))
 
 
-def main():
-    # Git history, rather than checkout timestamps or filenames, determines the newest upload.
-    commits = subprocess.check_output(['git', 'rev-list', 'HEAD', '--', 'uploads'], text=True).splitlines()
-    selected = None
+def newest_upload(*pathspecs):
+    # Git history determines the newest upload independently for each base.
+    commits = subprocess.check_output(
+        ['git', 'log', '--first-parent', '--format=%H', 'HEAD'], text=True
+    ).splitlines()
     for commit in commits:
-        names = subprocess.check_output(['git', 'diff-tree', '--root', '--no-commit-id', '--name-only', '-r', '-z', '--diff-filter=AM', commit, '--', 'uploads'], text=True).split('\0')
+        names = subprocess.check_output(
+            ['git', 'diff-tree', '--root', '--first-parent', '-m', '--no-commit-id',
+             '--name-only', '-r', '-z', '--diff-filter=AM', commit, '--', *pathspecs],
+            text=True,
+        ).split('\0')
         files = [Path(name) for name in names if name.lower().endswith('.csv') and Path(name).is_file()]
         if len(files) > 1:
-            raise ValueError('Upload one CSV per commit so the latest report is unambiguous.')
+            raise ValueError('Upload one CSV per base per commit so the latest report is unambiguous.')
         if files:
-            selected = files[0]
-            break
+            return files[0]
+    return None
+
+
+def import_report(selected, previous):
     if selected is None:
-        print('No CSV uploaded yet; preserving current data.json.')
-        return
+        return previous
     if selected.stat().st_size > 5 * 1024 * 1024:
-        raise ValueError('CSV exceeds the 5 MB limit.')
-    data = parse(selected.read_text(encoding='utf-8-sig'))
-    old = json.loads(Path('data.json').read_text())
-    if old.get('availability') == data and old.get('source') == selected.name:
+        raise ValueError(f'{selected}: CSV exceeds the 5 MB limit.')
+    try:
+        data = parse(selected.read_text(encoding='utf-8-sig'))
+    except (ValueError, csv.Error) as error:
+        raise ValueError(f'{selected}: {error}') from error
+    if previous and previous.get('availability') == data and previous.get('source') == selected.name:
+        return previous
+    print(f'Validated {len(data)} days from {selected}.')
+    return {
+        'updatedAt': datetime.now(ZoneInfo('America/Denver')).isoformat(timespec='seconds'),
+        'source': selected.name,
+        'availability': data,
+    }
+
+
+def main():
+    output = Path('data.json')
+    old = json.loads(output.read_text())
+    canyons = newest_upload('uploads', ':(exclude)uploads/mountain-village')
+    mountain = newest_upload('uploads/mountain-village')
+    canyons_previous = {key: old[key] for key in ('updatedAt', 'source', 'availability')}
+    updated = {**old, **import_report(canyons, canyons_previous)}
+    mountain_report = import_report(mountain, old.get('mountainVillage'))
+    if mountain_report is not None:
+        updated['mountainVillage'] = mountain_report
+    if updated != old:
+        output.write_text(json.dumps(updated, indent=2) + '\n')
+    else:
         print('Availability is already current.')
-        return
-    payload = {'schemaVersion': 1, 'updatedAt': datetime.now(ZoneInfo('America/Denver')).isoformat(timespec='seconds'), 'source': selected.name, 'availability': data}
-    Path('data.json').write_text(json.dumps(payload, indent=2) + '\n')
-    print(f'Validated {len(data)} days from {selected.name}.')
 
 
 if __name__ == '__main__':
