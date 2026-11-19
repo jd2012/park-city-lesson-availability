@@ -7,3 +7,9 @@ Select a base on the calendar and click its Upload CSV button. Commit one Ski Sc
 The repository is public. Upload only aggregate availability counts.
 
 Run `python3 scripts/import_csv.py` from the repository root to import the latest committed CSV for each base. The existing top-level fields in `data.json` hold Canyons Village data. The optional `mountainVillage` field holds Mountain Village data after its first upload.
+
+## Cloudflare Pages
+
+Connect this repository with the Git integration. Use `main` as the production branch, select no framework, set the build command to `sh scripts/build_cloudflare.sh`, and set the output directory to `dist`. The build imports the latest committed reports for each base and publishes the calendar and its aggregate data feed.
+
+After the first successful deployment, add `afp.jd2012.work` under the Cloudflare Pages project's Custom domains. Verify the domain over HTTPS before retiring the GitHub Pages deployment.
